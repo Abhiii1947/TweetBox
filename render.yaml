@@ -7,14 +7,14 @@ databases:
 services:
   - type: web
     plan: free
-    name: mysite
+    name: head
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "python -m gunicorn head.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-      - key: DATABASE_URL
+      - key: postgresql://tweetbox_user:w1XpaslLOtozLl5Q0keA4c0XvPKqkpEq@dpg-cto2su3qf0us73ale510-a/tweetbox
         fromDatabase:
-          name: mysitedb
+          name: tweetbox
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
